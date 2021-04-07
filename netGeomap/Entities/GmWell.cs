@@ -1,4 +1,5 @@
-﻿using System;
+﻿using netGeomap.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace netGeomap.Entities
 {
+    [GeomapEntity(EntityType.GmWell, "3.2", "井位")]
     public class GmWell : IGeomapEntity, IGeomapEntityInternal
     {
         /// <summary>
@@ -13,6 +15,9 @@ namespace netGeomap.Entities
         /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// 井口坐标。
+        /// </summary>
         public GeomapVector2 EntryPoint { get; set; }
 
         /// <summary>

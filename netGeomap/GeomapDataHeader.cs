@@ -60,5 +60,14 @@ namespace netGeomap
 
             return new GeomapDataHeader(majorType, version, minorType);
         }
+
+        /// <summary>
+        /// 转换成Geomap数据文本。
+        /// </summary>
+        /// <returns></returns>
+        public string ToDataString()
+        {
+            return $"{this.Type} v{this.Version}{(string.IsNullOrEmpty(this.MinorType) ? "" : $"({this.MinorType})")}";
+        }
     }
 }

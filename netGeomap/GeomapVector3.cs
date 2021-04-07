@@ -27,7 +27,7 @@ namespace netGeomap
         /// <returns></returns>
         public string ToDataString()
         {
-            return string.Format("{0:0.0} {0:0.0} {0:0.0}", this.x, this.y, this.z);
+            return string.Format("{0:0.0} {1:0.0} {2:0.0}", this.x, this.y, this.z);
         }
 
         public override string ToString()

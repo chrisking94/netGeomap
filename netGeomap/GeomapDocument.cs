@@ -1,7 +1,9 @@
-﻿using System;
+﻿using netGeomap.Entities;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -57,6 +59,48 @@ namespace netGeomap
             foreach (var entity in entites)
             {
                 this.Add(entity);
+            }
+        }
+
+        /// <summary>
+        /// 保存成txt文件。
+        /// <para>保存程序首先会创建给定文件夹，然后把实体数据按<see cref="Attributes.GeomapEntityAttribute"/>描述分类写入独立的txt文件。</para>
+        /// </summary>
+        /// <param name="folderPath">保存数据的文件夹。</param>
+        public void Save(string folderPath)
+        {
+            // 1. 创建文件夹；
+            Directory.CreateDirectory(folderPath);
+
+            // 2. 写出数据；
+            // 2.1 分组；
+            var groups = this.entities.GroupBy(e =>
+            {
+                var type = e.GetType();
+                var attr = type.GetCustomAttribute<Attributes.GeomapEntityAttribute>();
+                if (attr == null) throw new Exception($"请给 '{type.Name}' 类型实体添加 '{nameof(Attributes.GeomapEntityAttribute)}' 描述。");
+
+                return (attr.Type, attr.MinorType, attr.Version, attr.Name);
+            });
+            // 2.2 写出；
+            var sb = new StringBuilder(1024);
+            var folderName = Path.GetFileName(folderPath);
+            foreach (var group in groups)
+            {
+                sb.Clear();
+                var meta = group.Key;
+                var header = new GeomapDataHeader(meta.Type, meta.Version, meta.MinorType);
+                var postfix = meta.Name;
+
+                sb.AppendLine(header.ToDataString());
+                foreach (var entity in group)
+                {
+                    var dataStr = ((IGeomapEntityInternal)entity).ToDataString();
+                    sb.AppendLine(dataStr);
+                }
+
+                var filePath = $"{folderPath}/{folderName}【{postfix}】.txt";
+                File.WriteAllTextAsync(filePath, sb.ToString());  // Write to file.
             }
         }
     }

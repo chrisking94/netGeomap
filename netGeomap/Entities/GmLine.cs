@@ -34,9 +34,10 @@ namespace netGeomap.Entities
             var vertices = this.Vertices;
             foreach (var v in vertices)
             {
-                sb.AppendLine(v.ToDataString());
+                var vStr = string.Format("{0:0.0} {1:0.0} {2}", v.x, v.y, v.z);
+                sb.AppendLine(vStr);
             }
-            if (vertices.Count > 0) sb.Remove(sb.Length - 2, 2);  // remove last \r\n.
+            sb.Remove(sb.Length - 2, 2);  // remove last \r\n.
 
             return sb.ToString();
         }

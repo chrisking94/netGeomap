@@ -12,7 +12,7 @@ namespace netGeomap.Entities
     internal interface IGeomapEntityInternal
     {
         /// <summary>
-        /// 转换成Geomap数据文本。
+        /// 转换成Geomap数据文本。首尾不能有回车或换行符(\r or \n)。
         /// </summary>
         /// <returns></returns>
         string ToDataString();
