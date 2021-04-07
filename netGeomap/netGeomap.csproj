@@ -12,7 +12,8 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/chrisking94/netGeomap.git</RepositoryUrl>
     <PackageTags>Geomap API txt</PackageTags>
-    <PackageReleaseNotes>First version.</PackageReleaseNotes>
+    <PackageReleaseNotes>1. Add saving data utility.</PackageReleaseNotes>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
