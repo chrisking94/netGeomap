@@ -1,10 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Chris.King</Authors>
-    <Description>A .NET library which contains Geomap APIs.</Description>
+    <Description>A Geomap API .NET library.</Description>
     <Copyright>Chris</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/chrisking94/netGeomap/tree/master/netGeomap</PackageProjectUrl>
@@ -12,8 +12,8 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/chrisking94/netGeomap.git</RepositoryUrl>
     <PackageTags>Geomap API txt</PackageTags>
-    <PackageReleaseNotes>1. Add saving data utility.</PackageReleaseNotes>
-    <Version>1.1.0</Version>
+    <PackageReleaseNotes>1. Update to .NET Core 3.0</PackageReleaseNotes>
+    <Version>1.2.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
